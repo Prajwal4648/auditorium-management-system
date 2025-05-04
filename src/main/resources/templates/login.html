@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Auditorium Booking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-inter min-h-screen flex flex-col">
+<!-- Navigation Bar -->
+<nav class="bg-blue-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-xl font-bold">Auditorium Booking</a>
+        <div class="space-x-4">
+            <a href="/login" class="hover:underline">Login</a>
+            <a href="/register" class="hover:underline">Register</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="flex-grow flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h2>
+        <form th:action="@{/login}" method="post" id="loginForm" class="space-y-4">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                <input type="text" id="username" name="username" class="mt-1 w-full p-2 border rounded-md focus:ring focus:ring-blue-300" required>
+                <p id="usernameError" class="text-red-500 text-sm hidden">Username is required</p>
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" id="password" name="password" class="mt-1 w-full p-2 border rounded-md focus:ring focus:ring-blue-300" required>
+                <p id="passwordError" class="text-red-500 text-sm hidden">Password is required</p>
+            </div>
+            <div th:if="${param.error}" class="text-red-500 text-sm text-center">
+                Invalid username or password.
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition">Login</button>
+        </form>
+        <p class="mt-4 text-center text-sm text-gray-600">
+            Don't have an account? <a href="/register" class="text-blue-600 hover:underline">Register</a>
+        </p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white p-4 text-center">
+    <p>© 2025 Auditorium Booking. All rights reserved.</p>
+</footer>
+
+<script src="/js/scripts.js"></script>
+</body>
+</html>
